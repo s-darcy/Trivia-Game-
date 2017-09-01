@@ -13,6 +13,7 @@ class App extends Component {
         this.handleScoreClick = this.handleScoreClick.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
     
     handleScoreClick(player, delta){
@@ -45,8 +46,18 @@ class App extends Component {
             "board" : board
         });
     }
-    
-  render() {
+        
+    declareWinner (player){
+        let players = this.state.players.slice();
+        let currentScore = players[player].score;
+        let winningScore = this.state.board.winningCount;
+        if (currentScore === winningScore){
+            
+        }
+
+    }
+
+    render() {
       const players = this.state.players.map(function(player, index){
           return (
             <Player
@@ -67,9 +78,9 @@ class App extends Component {
             handleTextChange={this.handleTextChange}
             handleSubmit={this.handleSubmit}
             />
-              <section className="scoring">
-                {players}
-              </section>    
+          <section className="scoring">
+            {players}
+          </section>
         </div>
     );
   }
